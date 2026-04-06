@@ -167,3 +167,13 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `9050b52f1` and `aab32f79e` - `GuiScrewdriver` position source switch + follow-up fix
   - Status: skipped
   - Reason: upstream change depends on newer item data-component keys (`LittleTilesRegistry.FIRST_POS` / `SECOND_POS`), while current 1.20 code path still uses NBT `pos1`/`pos2` arrays and does not expose those component keys.
+
+## pre181
+
+- `daa5f75dc` - recipe GUI child-door selection crash fix
+  - Status: skipped as already present
+  - Reason: current 1.20 `GuiAnimationTimelinePanel.generateTimeline(...)` already guards `childChannels` entries with `if (channel != null)` before iterating keys.
+
+- `ab9a3252c` - shape click-in-air crash fix
+  - Status: skipped as already present
+  - Reason: current 1.20 `LittleShapeSelectable.addBox(...)` already uses `else if (facing != null)` before dereferencing facing axis/direction.
