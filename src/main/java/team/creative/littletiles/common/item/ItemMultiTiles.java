@@ -175,7 +175,7 @@ public class ItemMultiTiles extends Item implements ILittlePlacer, IItemTooltip 
         public ItemStack stack;
         
         public String getFileName() {
-            return "data/" + LittleTiles.MODID + "/example/" + name().toLowerCase() + ".struct";
+            return "assets/" + LittleTiles.MODID + "/example/" + name().toLowerCase() + ".struct";
         }
         
     }
