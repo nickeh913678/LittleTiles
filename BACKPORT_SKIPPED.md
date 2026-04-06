@@ -195,3 +195,17 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `795c78fa9` - recipe preview rendering inside GUI
   - Status: adapted
   - Reason: upstream uses newer GUI parent interface checks; 1.20 branch applies equivalent guard by skipping preview tick while any screen is open (`mc.screen != null`).
+
+## pre183
+
+- `db6b075eb` - animation sound crash when not in entity form
+  - Status: skipped as already present
+  - Reason: current 1.20 `LittleStateStructure.playClient(...)` already guards `getAnimationEntity()` null and falls back to local world sound playback.
+
+- `b9d8e6b73` - door replay not animating back to original state
+  - Status: skipped as already present
+  - Reason: current 1.20 already contains `AnimationTimeline.isAligned()` and uses `!timeline.isAligned()` in `LittleStateStructure.startTransition(...)` for entity-form decision.
+
+- `f4b34103c` - client entity-add hook for smoother transitions
+  - Status: skipped
+  - Reason: upstream targets a newer `ClientPacketListener#createEntityFromPacket(...)` hook signature; 1.20 branch uses `handleAddEntity(...)` with an existing transition interception path in `ClientPacketListenerMixin`.
