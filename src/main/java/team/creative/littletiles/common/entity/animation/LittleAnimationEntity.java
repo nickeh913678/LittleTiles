@@ -253,9 +253,9 @@ public class LittleAnimationEntity extends LittleEntity<LittleAnimationEntityPhy
     @Override
     public boolean noClip() {
         try {
-            return getStructure() instanceof LittleStructure s && s.entityNoClip();
+            return getStructure().entityNoClip();
         } catch (CorruptedConnectionException | NotYetConnectedException e) {
             return false;
         }
     }
-    
+}
