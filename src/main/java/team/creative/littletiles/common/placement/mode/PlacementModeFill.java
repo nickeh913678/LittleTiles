@@ -31,7 +31,7 @@ public class PlacementModeFill extends PlacementMode {
     @Override
     public boolean placeTile(PlacementContext context, LittleStructure structure, LittleTile tile) throws LittleActionException {
         if (!context.collisionTest) {
-            context.placeTile(tile);
+            context.placeTile(structure, tile);
             return true;
         }
         
@@ -50,7 +50,7 @@ public class PlacementModeFill extends PlacementMode {
         if (boxes.isEmpty())
             return false;
         
-        context.placeTile(tile.copy(boxes));
+        context.placeTile(structure, tile.copy(boxes));
         return true;
     }
 }

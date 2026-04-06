@@ -30,6 +30,10 @@ public abstract class GuiConfigure extends GuiLayer {
     protected boolean supportsConfiguration() {
         return true;
     }
+
+    protected CompoundTag save() {
+        return saveConfiguration(new CompoundTag());
+    }
     
     public abstract CompoundTag saveConfiguration(CompoundTag nbt);
     
@@ -47,7 +51,7 @@ public abstract class GuiConfigure extends GuiLayer {
     @Override
     public void closed() {
         if (isClient()) {
-            CompoundTag nbt = saveConfiguration(new CompoundTag());
+            CompoundTag nbt = save();
             if (nbt != null)
                 SAVE_CONFIG.send(nbt);
         }

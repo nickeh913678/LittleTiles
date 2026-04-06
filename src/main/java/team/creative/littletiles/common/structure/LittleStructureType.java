@@ -149,7 +149,7 @@ public class LittleStructureType {
         return false;
     }
     
-    public boolean tileCountAsIngredient(LittleGroup group) {
+    public boolean tilesCountAsIngredient() {
         return true;
     }
     

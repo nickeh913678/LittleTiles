@@ -177,3 +177,21 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `ab9a3252c` - shape click-in-air crash fix
   - Status: skipped as already present
   - Reason: current 1.20 `LittleShapeSelectable.addBox(...)` already uses `else if (facing != null)` before dereferencing facing axis/direction.
+
+## pre182
+
+- `c1039ce6c` - JEI color-amount crash fix
+  - Status: skipped as already present
+  - Reason: current 1.20 `ItemColorIngredient.getColor(...)` already reads from NBT `value` with default-zero semantics (`getOrCreateTag().getInt(...)`).
+
+- `8bb5b0cda` - updated iris file
+  - Status: skipped
+  - Reason: upstream change only updates 1.21 build/dependency wiring; not applicable to current 1.20 Forge build layout.
+
+- `a5e376799` - render-change timing artifacts
+  - Status: partially applied
+  - Reason: non-Sodium timing/order adjustments were applied in `LevelRendererMixin` (TAIL hook + update-order change), while Sodium-specific reload integration is not applicable on this 1.20 branch.
+
+- `795c78fa9` - recipe preview rendering inside GUI
+  - Status: adapted
+  - Reason: upstream uses newer GUI parent interface checks; 1.20 branch applies equivalent guard by skipping preview tick while any screen is open (`mc.screen != null`).

@@ -141,7 +141,7 @@ public class LittleActionPlace extends LittleAction<Boolean> {
                     checkAndGive(player, inventory, getIngredients(placement.unplaceableTiles));
                 } else {
                     LittleIngredients ingredients = LittleIngredient.extractStructureOnly(preview.previews);
-                    ingredients.add(getIngredients(result.placedPreviews));
+                    ingredients.add(result.ingredients.copy());
                     take(player, inventory, ingredients);
                 }
             }

@@ -53,7 +53,7 @@ public class PlacementModeReplace extends PlacementMode {
         }
         if (boxes.isEmpty())
             return false;
-        context.placeTile(tile.copy(boxes));
+        context.placeTile(structure, tile.copy(boxes));
         return true;
     }
     

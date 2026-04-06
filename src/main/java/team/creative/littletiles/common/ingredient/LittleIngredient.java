@@ -50,7 +50,7 @@ public abstract class LittleIngredient<T extends LittleIngredient> extends Littl
     }
     
     static void extract(LittleIngredients ingredients, LittleGroup group, boolean onlyStructure) {
-        if (!onlyStructure && (!group.hasStructure() || group.getStructureType().tileCountAsIngredient(group)))
+        if (!onlyStructure && (!group.hasStructure() || group.getStructureType().tilesCountAsIngredient()))
             for (IngredientConvertionHandler handler : converationHandlers)
                 ingredients.add(handler.extract(group));
             

@@ -26,15 +26,15 @@ import team.creative.littletiles.client.render.level.LittleClientEventHandler;
 @Mixin(value = LevelRenderer.class, priority = 1500)
 public class LevelRendererMixin {
     
-    @Inject(at = @At("HEAD"), method = "allChanged()V")
+    @Inject(at = @At("TAIL"), method = "allChanged()V")
     public void allChanged(CallbackInfo info) {
         if (Minecraft.getInstance().levelRenderer != (LevelRenderer) (Object) this)
             return;
 
         synchronized (RenderingThread.class) {
-            RenderingThread.CURRENT_RENDERING_INDEX++;
-
             VertexFormatUtils.update();
+
+            RenderingThread.CURRENT_RENDERING_INDEX++;
 
             if (LittleTilesClient.ANIMATION_HANDLER != null)
                 LittleTilesClient.ANIMATION_HANDLER.allChanged();
