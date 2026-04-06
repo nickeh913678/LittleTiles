@@ -51,3 +51,25 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - No skipped items at time of writing.
   - `c576c2bf2` and `c9e612e65` were already present in current 1.20 code.
   - `b9128ba9b` translation key already present.
+
+## pre172
+
+- `e0a757396` - invalid signal component break handling
+  - Status: skipped as already present
+  - Reason: null-check before `connection.findNetwork()` is already in current 1.20 code.
+
+- `6b876bcfb` - signal GUI parse exception logging + rendering cell fix
+  - Status: partially skipped as already present
+  - Reason: parse-exception logging (`LittleTiles.LOGGER.catching(e)`) already present; no additional local change needed for that part.
+
+- `0f1973d67` - fallback component in signal dialog
+  - Status: skipped as already present
+  - Reason: fallback `SignalComponentType.INVALID` component return path already exists in current 1.20 code.
+
+- `3b82d7b56` and `8a99376a5` - `LittleToolShaper` crash fixes
+  - Status: skipped
+  - Reason: `LittleToolShaper` class/path from upstream commit does not exist in 1.20 branch.
+
+- `51430b5f6` - add `zh_cn.json`
+  - Status: skipped as already present
+  - Reason: `src/main/resources/assets/littletiles/lang/zh_cn.json` already exists in this 1.20 branch.
