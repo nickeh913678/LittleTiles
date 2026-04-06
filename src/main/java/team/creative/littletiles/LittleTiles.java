@@ -247,41 +247,6 @@ public class LittleTiles {
             return 0;
         }));
         
-        event.getServer().getCommands().getDispatcher().register(Commands.literal("level").executes((x) -> {
-            try {
-                ServerLevel level = x.getSource().getLevel();
-                BlockPos pos = BlockPos.containing(x.getSource().getPosition()).above();
-                
-                LittleEntity entity = new LittleLevelEntity(level, pos);
-                
-                LittleSubLevel subLevel = entity.getSubLevel();
-                LittleGrid grid = LittleGrid.overallDefault();
-                CompoundTag nbt = new CompoundTag();
-                nbt.putString("id", LittleStructureRegistry.REGISTRY.getDefault().id);
-                LittleGroup group = new LittleGroup(nbt, Collections.EMPTY_LIST);
-                group.add(grid, new LittleElement(Blocks.STONE.defaultBlockState(), ColorUtils.WHITE), new LittleBox(0, grid.count - 1, 0, grid.count, grid.count, grid.count));
-                subLevel.setBlock(pos.above(), Blocks.DIRT.defaultBlockState(), 3);
-                PlacementPreview preview = PlacementPreview.load(null, PlacementMode.ALL, new LittleGroupAbsolute(pos, group), Facing.EAST);
-                
-                Placement placement = new Placement(null, (Level) subLevel, preview);
-                PlacementResult result = placement.place();
-                if (result == null)
-                    throw new LittleActionException("Could not be placed");
-                
-                level.addFreshEntity(entity);
-                x.getSource().sendSystemMessage(Component.literal("Spawned level"));
-            } catch (LittleActionException e) {
-                x.getSource().sendFailure(e.getTranslatable());
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw e;
-            } catch (Error e) {
-                e.printStackTrace();
-            }
-            
-            return 0;
-        }));
-        
         event.getServer().getCommands().getDispatcher().register(Commands.literal("animation").executes((x) -> {
             try {
                 ServerLevel level = x.getSource().getLevel();
