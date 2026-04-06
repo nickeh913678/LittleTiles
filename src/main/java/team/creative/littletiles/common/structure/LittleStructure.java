@@ -20,6 +20,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -1000,6 +1001,14 @@ public abstract class LittleStructure implements ISignalSchedulable, ILevelPosit
     
     public InteractionResult use(Level level, LittleTileContext context, BlockPos pos, Player player, BlockHitResult result, InteractionHand hand) {
         return InteractionResult.PASS;
+    }
+
+    public boolean wrenchInteract(Player player) {
+        return false;
+    }
+
+    public Container getInventory() {
+        return null;
     }
     
     public boolean isBed(LivingEntity player) {

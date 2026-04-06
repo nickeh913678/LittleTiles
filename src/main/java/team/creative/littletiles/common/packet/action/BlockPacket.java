@@ -90,9 +90,12 @@ public class BlockPacket extends CreativePacket {
             public void action(Level level, BETiles be, LittleTileContext context, ItemStack stack, Player player, BlockHitResult moving, BlockPos pos, CompoundTag nbt) {
                 if (context.parent.isStructure())
                     try {
-                        String info = context.parent.getStructure().info();
-                        if (!info.isEmpty())
-                            player.sendSystemMessage(Component.literal(info));
+                        LittleStructure structure = context.parent.getStructure();
+                        if (!structure.wrenchInteract(player)) {
+                            String info = structure.info();
+                            if (!info.isEmpty())
+                                player.sendSystemMessage(Component.literal(info));
+                        }
                     } catch (CorruptedConnectionException | NotYetConnectedException e) {}
             }
             

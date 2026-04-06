@@ -239,3 +239,13 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `6781ee7f3` - readded glove functionality + mark mode positions
   - Status: skipped
   - Reason: upstream commit is a broad tool-system refactor (14 files, 500+ LOC) relying on classes/signatures not present on this 1.20 branch (for example `client/tool/LittleToolPlacer.java` path and new transformer workflow). No safe minimal drop-in hunk identified.
+
+## pre187
+
+- `a76bdeea1` - storage inventory interaction capability wiring
+  - Status: partially applied
+  - Reason: safe structure-side hooks were applied (`BETiles` capability invalidation on tile update, `LittleStructure#getInventory`, `LittleStorage` inventory exposure and dirty mark). The upstream capability registration in `LittleTiles` targets NeoForge capability APIs and wrappers that do not exist on this Forge 1.20 branch.
+
+- `94bcc0820` - item holder lock/filter GUI + behavior
+  - Status: skipped
+  - Reason: upstream change introduces a new GUI (`GuiItemHolder`) and substantial item-holder NBT/filter/config plumbing tied to newer config/gui API signatures and provider-based ingredient serialization, which is not a safe drop-in to current 1.20 code without a larger subsystem backport.

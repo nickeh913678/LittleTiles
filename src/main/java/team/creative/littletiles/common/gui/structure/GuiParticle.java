@@ -144,6 +144,7 @@ public class GuiParticle extends GuiLayer {
     public GuiCounter delay;
     public GuiTabButtonMapped<ParticleSpreadGuiHandler> spread;
     public GuiPanel spreadPanel;
+    public GuiCheckBox locked;
     
     public GuiSyncLocal<CompoundTag> SAVE = getSyncHolder().register("save", x -> {
         particle.loadSettings(x);
@@ -214,6 +215,7 @@ public class GuiParticle extends GuiLayer {
         
         GuiParent bottom = new GuiParent().setAlign(Align.RIGHT);
         add(bottom);
+        bottom.addLeft(locked = new GuiCheckBox("locked", particle.locked).setTranslate("gui.structure.locked"));
         bottom.add(new GuiButton("save", x -> {
             CompoundTag nbt = new CompoundTag();
             
@@ -237,6 +239,7 @@ public class GuiParticle extends GuiLayer {
             CompoundTag data = new CompoundTag();
             newSettings.write(data);
             nbt.put("settings", data);
+            nbt.putBoolean("locked", locked.value);
             SAVE.send(nbt);
             closeThisLayer();
         }).setTranslate("gui.save"));
