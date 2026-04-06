@@ -68,8 +68,9 @@ public class GuiAnimationViewer extends GuiControl {
         
         switch (grabMode) {
             case LEFT -> {
-                rotY.set(rotY.aimed() + x - grabX);
-                rotX.set(rotX.aimed() + y - grabY);
+                double scale = Math.max(1.0, Math.min(rect.getWidth(), rect.getHeight()));
+                rotY.setStart(rotY.aimed() + (x - grabX) / scale * 180);
+                rotX.setStart(rotX.aimed() + (y - grabY) / scale * 180);
             }
             default -> projection.dragMouse(this, x - grabX, y - grabY);
         }

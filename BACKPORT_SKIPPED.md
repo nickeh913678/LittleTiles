@@ -141,3 +141,13 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `50f2a6101` - null placement position guard in `LittleToolPlacer`
   - Status: skipped
   - Reason: `LittleToolPlacer` class/path from upstream commit does not exist in this 1.20 branch.
+
+## pre177
+
+- `a1cfb4b30` - render/cache reset and shader-switch artifact fixes
+  - Status: partially applied
+  - Reason: non-Sodium parts were applied (`BERenderManager`, `RenderingThread`, `RenderingBlockContext`, `LevelRendererMixin`, `LittleTilesClient` reload path cleanup), but Sodium-specific files and hooks are not present in this 1.20 branch (`client/mod/sodium/**`, `mixin/sodium/**`, `RenderAdditional`).
+
+- `a1cfb4b30` - animation section compiler refresh in `LittleAnimationHandlerClient`
+  - Status: skipped
+  - Reason: upstream `sectionCompiler` field/method path does not exist in this 1.20 implementation.

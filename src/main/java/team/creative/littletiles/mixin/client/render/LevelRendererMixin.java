@@ -17,7 +17,9 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.culling.Frustum;
 import team.creative.creativecore.client.render.VertexFormatUtils;
+import team.creative.littletiles.LittleTiles;
 import team.creative.littletiles.client.LittleTilesClient;
+import team.creative.littletiles.client.render.block.LittleBlockClientRegistry;
 import team.creative.littletiles.client.render.cache.build.RenderingThread;
 import team.creative.littletiles.client.render.level.LittleClientEventHandler;
 
@@ -26,12 +28,22 @@ public class LevelRendererMixin {
     
     @Inject(at = @At("HEAD"), method = "allChanged()V")
     public void allChanged(CallbackInfo info) {
-        if (Minecraft.getInstance().levelRenderer == (LevelRenderer) (Object) this)
+        if (Minecraft.getInstance().levelRenderer != (LevelRenderer) (Object) this)
+            return;
+
+        synchronized (RenderingThread.class) {
             RenderingThread.CURRENT_RENDERING_INDEX++;
-        if (LittleTilesClient.ANIMATION_HANDLER != null)
-            LittleTilesClient.ANIMATION_HANDLER.allChanged();
-        RenderingThread.reload();
-        VertexFormatUtils.update();
+
+            VertexFormatUtils.update();
+
+            if (LittleTilesClient.ANIMATION_HANDLER != null)
+                LittleTilesClient.ANIMATION_HANDLER.allChanged();
+            LittleBlockClientRegistry.clearCache();
+            if (LittleTilesClient.ITEM_RENDER_CACHE != null)
+                LittleTilesClient.ITEM_RENDER_CACHE.clearCache();
+
+            RenderingThread.initThreads(LittleTiles.CONFIG.rendering.renderingThreadCount);
+        }
     }
     
     @Inject(at = @At(value = "INVOKE_STRING", target = "Lnet/minecraft/util/profiling/ProfilerFiller;popPush(Ljava/lang/String;)V", args = "ldc=blockentities"),

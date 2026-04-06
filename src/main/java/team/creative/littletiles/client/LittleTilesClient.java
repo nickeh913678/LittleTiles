@@ -23,9 +23,6 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.ReloadableResourceManager;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -60,8 +57,6 @@ import team.creative.littletiles.client.mod.oculus.OculusManager;
 import team.creative.littletiles.client.mod.rubidium.RubidiumManager;
 import team.creative.littletiles.client.player.LittleClientPlayerConnection;
 import team.creative.littletiles.client.render.block.BETilesRenderer;
-import team.creative.littletiles.client.render.block.LittleBlockClientRegistry;
-import team.creative.littletiles.client.render.cache.build.RenderingThread;
 import team.creative.littletiles.client.render.entity.LittleEntityRenderer;
 import team.creative.littletiles.client.render.entity.LittleSitRenderer;
 import team.creative.littletiles.client.render.entity.RenderSizedTNTPrimed;
@@ -209,17 +204,6 @@ public class LittleTilesClient {
         // Init overlays
         MinecraftForge.EVENT_BUS.register(LittleTilesProfilerOverlay.class);
         LEVEL_HANDLERS.register(OVERLAY_RENDERER = new OverlayRenderer());
-        
-        ReloadableResourceManager reloadableResourceManager = (ReloadableResourceManager) mc.getResourceManager();
-        reloadableResourceManager.registerReloadListener(new ResourceManagerReloadListener() {
-            
-            @Override
-            public void onResourceManagerReload(ResourceManager manager) {
-                RenderingThread.CURRENT_RENDERING_INDEX++;
-                LittleBlockClientRegistry.clearCache();
-                ITEM_RENDER_CACHE.clearCache();
-            }
-        });
         
         CreativeCoreClient.registerClientConfig(LittleTiles.MODID);
         

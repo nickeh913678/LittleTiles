@@ -43,7 +43,7 @@ public class RenderingThread extends Thread {
     
     public static volatile int CURRENT_RENDERING_INDEX = Integer.MIN_VALUE;
     private static final ChunkLayerMap<BufferCache> EMPTY_HOLDERS = new ChunkLayerMap<>();
-    public static List<RenderingThread> THREADS;
+    public static volatile List<RenderingThread> THREADS;
     public static final HashMap<RenderChunkExtender, Integer> CHUNKS = new HashMap<>();
     public static final Minecraft MC = Minecraft.getInstance();
     private static final ConcurrentLinkedQueue<RenderingBlockContext> QUEUE = new ConcurrentLinkedQueue<>();
@@ -54,27 +54,34 @@ public class RenderingThread extends Thread {
         if (THREADS != null) {
             for (RenderingThread thread : THREADS)
                 if (thread != null)
-                    thread.interrupt();
-                
-            while (QUEUE.size() > 0)
-                QUEUE.poll().be.render.resetRenderingState();
-            QUEUE.clear(); // Make sure all levels and sections are reset
+                    thread.stopImmediately();
+
+            emptyQueue();
         }
         THREADS = new ArrayList<>();
         for (int i = 0; i < count; i++)
             THREADS.add(new RenderingThread());
+    }
+
+    private static void emptyQueue() {
+        while (QUEUE.size() > 0) {
+            RenderingBlockContext context = QUEUE.poll();
+            if (context != null)
+                context.be.render.resetRenderingState();
+        }
+        QUEUE.clear();
+        CHUNKS.clear();
     }
     
     public static synchronized void unload() {
         if (THREADS != null)
             for (RenderingThread thread : THREADS)
                 if (thread != null)
-                    thread.interrupt();
-                
+                    thread.stopImmediately();
+
         THREADS = null;
-        
-        QUEUE.clear();
-        CHUNKS.clear();
+
+        emptyQueue();
     }
     
     public static synchronized boolean queue(BETiles be, @Nullable RenderChunkExtender chunk) {
@@ -174,6 +181,8 @@ public class RenderingThread extends Thread {
                     
                     if (data == null)
                         continue;
+
+                    data.proccessed = false;
                     
                     try {
                         if (LittleTilesProfilerOverlay.isActive())
@@ -247,15 +256,19 @@ public class RenderingThread extends Thread {
                         finishWithError(data);
                     } catch (RenderingBlockedException e) {
                         QUEUE.add(data);
+                        data.proccessed = true;
                     } catch (OutOfMemoryError error) {
                         QUEUE.add(data);
+                        data.proccessed = true;
                         LittleTiles.LOGGER.error(error);
                     } catch (Throwable e) {
                         if (!(e instanceof RenderingException))
-                            LittleTiles.LOGGER.error(e);
+                            LittleTiles.LOGGER.catching(e);
                         finishWithError(data);
                     } finally {
                         buffers.clear();
+                        if (!data.proccessed)
+                            finishWithError(data);
                         data.unsetBlocked();
                     }
                     data = null;
@@ -266,9 +279,20 @@ public class RenderingThread extends Thread {
             }
         } catch (InterruptedException e) {} finally {
             for (int i = 0; i < pipelines.length; i++)
-                if (pipelines[i] != null)
+                if (pipelines[i] != null) {
                     pipelines[i].release();
+                    pipelines[i] = null;
+                }
         }
+    }
+
+    private void stopImmediately() {
+        interrupt();
+        for (int i = 0; i < pipelines.length; i++)
+            if (pipelines[i] != null) {
+                pipelines[i].release();
+                pipelines[i] = null;
+            }
     }
     
     public static void finishWithError(RenderingBlockContext data) {
@@ -296,7 +320,9 @@ public class RenderingThread extends Thread {
     }
 
     public static boolean finish(RenderingBlockContext data, ChunkLayerMap<BufferCache> buffers, int renderState, boolean force) {
-        if (!data.be.render.finishBuildingCache(data.index, buffers, renderState, force))
+        boolean successful = data.be.render.finishBuildingCache(data.index, buffers, renderState, force);
+        data.proccessed = true;
+        if (!successful)
             return false;
 
         unqueue(data);

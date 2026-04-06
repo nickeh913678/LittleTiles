@@ -17,6 +17,7 @@ public class RenderingBlockContext {
     public final BlockState state;
     public final RenderChunkExtender chunk;
     public int index;
+    public boolean proccessed = false;
     
     public HashMap<Facing, BETiles> neighboursBEs;
     
