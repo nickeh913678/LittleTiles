@@ -229,3 +229,13 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `eff8b4290` - door placement no-space crash guard
   - Status: skipped as already present
   - Reason: current 1.20 `LittleStructure.changeToBlockForm()` already checks `result == null` before using `result` and before broadcasting updates.
+
+## pre186
+
+- `ed3d092b0` - neighbor updates sent too early when opening doors
+  - Status: partially applied
+  - Reason: applied the effective timing fix on current 1.20 path by moving `NeighborUpdateOrganizer` processing back to server tick END; the upstream `LittleAnimationHandlers` Pre/Post typed-event adjustment is not directly applicable because this branch uses `LevelTickEvent` with phase handling inside `LittleAnimationHandler`.
+
+- `6781ee7f3` - readded glove functionality + mark mode positions
+  - Status: skipped
+  - Reason: upstream commit is a broad tool-system refactor (14 files, 500+ LOC) relying on classes/signatures not present on this 1.20 branch (for example `client/tool/LittleToolPlacer.java` path and new transformer workflow). No safe minimal drop-in hunk identified.
