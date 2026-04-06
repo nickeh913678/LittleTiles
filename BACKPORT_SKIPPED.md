@@ -87,3 +87,25 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `36c44ed6b` - placer grid reset fix in `LittleToolPlacer`
   - Status: skipped
   - Reason: `LittleToolPlacer` class/path from upstream commit does not exist in 1.20 branch.
+
+## pre174
+
+- `85a9747a4` - resized signal equation/virtual input GUIs
+  - Status: skipped as already present
+  - Reason: current 1.20 already uses the enlarged GUI dimensions.
+
+- `ba1b87def` - signal input GUI wiring fixes
+  - Status: skipped as already present
+  - Reason: current 1.20 already has the same layout/event-change updates.
+
+- `66f73749c` - guard `getExternalOutput` against null external handler
+  - Status: skipped as already present
+  - Reason: null guard already exists in current 1.20 code.
+
+- `bae6d7a60` - reset signal network state correctly
+  - Status: skipped as already present
+  - Reason: current 1.20 already uses `state = state.reset()`.
+
+- `783e55bdc` - sodium pipeline change
+  - Status: skipped
+  - Reason: target sodium pipeline file from upstream commit does not exist in this 1.20 branch; build.gradle dependency bump is not applied here.

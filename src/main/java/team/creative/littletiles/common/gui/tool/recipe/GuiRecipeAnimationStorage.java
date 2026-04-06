@@ -208,6 +208,7 @@ public class GuiRecipeAnimationStorage implements Iterable<Entry<GuiTreeItemStru
                 }
                 pose.popPose();
             }
+            RenderSystem.setShaderColor(1, 1, 1, 1);
             RenderSystem.disableDepthTest();
         }
         selected = null;

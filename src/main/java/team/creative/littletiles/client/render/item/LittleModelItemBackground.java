@@ -38,9 +38,12 @@ public class LittleModelItemBackground extends CreativeItemModel {
     public void applyCustomOpenGLHackery(PoseStack pose, ItemStack stack, ItemDisplayContext cameraTransformType) {
         if (cameraTransformType == ItemDisplayContext.GUI || shouldRenderFake(stack)) {
 
-            pose.pushPose();
-            
             ItemStack toFake = getFakeStack(stack);
+            if (toFake.isEmpty())
+                return;
+
+            pose.pushPose();
+
             Minecraft mc = Minecraft.getInstance();
             BakedModel model = mc.getItemRenderer().getModel(toFake, null, null, 0);
             
@@ -56,7 +59,7 @@ public class LittleModelItemBackground extends CreativeItemModel {
     
     public void prepareRenderer(ItemDisplayContext context, PoseStack pose) {
         if (context == ItemDisplayContext.GUI)
-            pose.translate(0, 0, 100);
+            pose.translate(0, 0, 1);
     }
     
 }
