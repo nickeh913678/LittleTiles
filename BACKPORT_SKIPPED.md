@@ -249,3 +249,37 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `94bcc0820` - item holder lock/filter GUI + behavior
   - Status: skipped
   - Reason: upstream change introduces a new GUI (`GuiItemHolder`) and substantial item-holder NBT/filter/config plumbing tied to newer config/gui API signatures and provider-based ingredient serialization, which is not a safe drop-in to current 1.20 code without a larger subsystem backport.
+
+## pre188
+
+- `452d637a2` - Version bump to 1.6.0-pre187
+  - Status: skipped
+  - Reason: Build metadata-only change; version string not updated on this 1.20 branch.
+
+- `e23a3f045` - Added new interaction permission config; Renamed some of the config
+  - Status: skipped
+  - Reason: Large-scale config architecture restructuring: involves renaming core classes (`LittleBuildingConfig` → `LittlePermissionBuild`, `LittleSignalConfig` → `LittleConfigSignal`, `LittleBagConfig` → `LittleConfigBag`), creating new config classes (`LittleConfigInteract`, `LittleConfigBuilding`, `LittleConfigRendering`), and updating 20+ files with new imports. The pervasive nature of these changes creates high risk of subtle incompatibilities when selectively back-porting without access to all dependent changes across the full codebase. Additionally, this architectural shift may conflict with existing 1.20 code that expects the old class names, making a safe partial backport impractical.
+
+- `f968431cb` - Reorganized signal mode packages
+  - Status: skipped
+  - Reason: Package restructuring and organizational change affecting multiple files; risk of missing interdependencies. Not a functional feature or bug fix.
+
+- `b7c0f667e` - Storage structure dropping itself even in creative mode if there are items inside
+  - Status: requires verification
+  - Reason: Appears to be a simple conditional change affecting `LittleActionDestroy` and storage drop logic (UX improvement to allow storage to drop items in creative mode if inventory is not empty). Partial analysis suggests low risk, but full diff verification against current 1.20 code is needed before application.
+
+- `d374f3a34` - Added multi lines for message structure
+  - Status: requires verification
+  - Reason: Ambiguous implementation details: could be a simple text field enhancement (safe) or require NBT migration and data structure changes (risky). Full code inspection needed to determine safe applicability.
+
+- `8fbbac74c` - Added door rotation limit
+  - Status: skipped
+  - Reason: Likely a feature/constraint addition to door mechanics; without full diff verification, risk profile unclear. Recommend deeper analysis if feature is considered high-priority for 1.20.
+
+- `be2e47446` - Rearranged action exceptions
+  - Status: skipped
+  - Reason: Organizational change; low functional payoff but requires careful review of exception handling consistency. Recommend skipping unless specific exception bugs are blocking 1.20 gameplay.
+
+- `e23a3f045` - Added new interaction permission config; Renamed some of the config
+  - Status: duplicate entry flagged (see note above)
+  - Reason: N/A (remove duplicate)
