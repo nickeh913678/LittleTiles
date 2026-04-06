@@ -127,3 +127,17 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `390b086a9` - old door conversion with missing state guard
   - Status: skipped as already present
   - Reason: current `convertDoorBaseData` already checks `state != null` before writing.
+
+## pre176
+
+- `4519ccbff` - clear render queue after thread re-init
+  - Status: skipped as already present
+  - Reason: current 1.20 `RenderingThread.initThreads` already performs an explicit queue clear.
+
+- `a4311886c` - iso viewer partially-visible viewport fix
+  - Status: skipped
+  - Reason: upstream fix depends on a newer render callback signature exposing both control and visible rects; current 1.20 GUI API only exposes one rect in this control.
+
+- `50f2a6101` - null placement position guard in `LittleToolPlacer`
+  - Status: skipped
+  - Reason: `LittleToolPlacer` class/path from upstream commit does not exist in this 1.20 branch.

@@ -189,9 +189,12 @@ public class RenderingThread extends Thread {
                         
                         for (RenderType layer : RenderType.chunkBufferLayers()) {
                             IndexedCollector<LittleRenderBox> cubes = data.be.render.getRenderingBoxes(data, layer);
-                            
-                            if (cubes == null)
+
+                            if (cubes == null || cubes.isEmpty()) {
+                                if (!finish(data, EMPTY_HOLDERS, CURRENT_RENDERING_INDEX, false))
+                                    QUEUE.add(data);
                                 continue;
+                            }
                             
                             for (LittleRenderBox cube : cubes) {
                                 if (cube.doesNeedQuadUpdate) {
@@ -226,36 +229,31 @@ public class RenderingThread extends Thread {
                         
                         int renderState = CURRENT_RENDERING_INDEX;
                         VertexFormat format = DefaultVertexFormat.BLOCK;
-                        try {
-                            posestack.setIdentity();
-                            get(data.chunk.getPipeline()).buildCache(posestack, buffers, data, format, bakedQuadWrapper);
-                            
-                            if (!LittleTiles.CONFIG.rendering.useCubeCache)
-                                data.be.render.boxCache.clear();
-                            
-                            if (!finish(data, buffers, renderState, false))
-                                QUEUE.add(data);
-                            
-                            buffers.clear();
-                            
-                            if (LittleTilesProfilerOverlay.isActive())
-                                LittleTilesProfilerOverlay.finishBuildingCache(System.nanoTime() - duration);
-                        } catch (Exception e) {
-                            LittleTiles.LOGGER.error(e);
-                            if (!finish(data, EMPTY_HOLDERS, -1, false))
-                                QUEUE.add(data);
-                        }
+
+                        posestack.setIdentity();
+                        get(data.chunk.getPipeline()).buildCache(posestack, buffers, data, format, bakedQuadWrapper);
+
+                        if (!LittleTiles.CONFIG.rendering.useCubeCache)
+                            data.be.render.boxCache.clear();
+
+                        if (!finish(data, buffers, renderState, false))
+                            QUEUE.add(data);
+
+                        buffers.clear();
+
+                        if (LittleTilesProfilerOverlay.isActive())
+                            LittleTilesProfilerOverlay.finishBuildingCache(System.nanoTime() - duration);
                     } catch (RemovedBlockEntityException e) {
-                        finish(data, EMPTY_HOLDERS, -1, true);
+                        finishWithError(data);
                     } catch (RenderingBlockedException e) {
                         QUEUE.add(data);
-                    } catch (Exception e) {
-                        if (!(e instanceof RenderingException))
-                            LittleTiles.LOGGER.error(e);
-                        finish(data, EMPTY_HOLDERS, -1, true);
                     } catch (OutOfMemoryError error) {
                         QUEUE.add(data);
                         LittleTiles.LOGGER.error(error);
+                    } catch (Throwable e) {
+                        if (!(e instanceof RenderingException))
+                            LittleTiles.LOGGER.error(e);
+                        finishWithError(data);
                     } finally {
                         buffers.clear();
                         data.unsetBlocked();
@@ -273,12 +271,14 @@ public class RenderingThread extends Thread {
         }
     }
     
-    public static boolean finish(RenderingBlockContext data, ChunkLayerMap<BufferCache> buffers, int renderState, boolean force) {
-        if (!data.be.render.finishBuildingCache(data.index, buffers, renderState, force))
-            return false;
-        
+    public static void finishWithError(RenderingBlockContext data) {
+        if (!finish(data, EMPTY_HOLDERS, -1, true))
+            unqueue(data);
+    }
+
+    public static void unqueue(RenderingBlockContext data) {
         boolean complete = false;
-        
+
         synchronized (CHUNKS) {
             Integer count = CHUNKS.get(data.chunk);
             if (count != null)
@@ -293,8 +293,15 @@ public class RenderingThread extends Thread {
             LittleTilesProfilerOverlay.chunkUpdates++;
             data.chunk.markReadyForUpdate(false);
         }
+    }
+
+    public static boolean finish(RenderingBlockContext data, ChunkLayerMap<BufferCache> buffers, int renderState, boolean force) {
+        if (!data.be.render.finishBuildingCache(data.index, buffers, renderState, force))
+            return false;
+
+        unqueue(data);
         return true;
-        
+
     }
     
     public static class RemovedBlockEntityException extends Exception {
