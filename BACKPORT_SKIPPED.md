@@ -109,3 +109,21 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `783e55bdc` - sodium pipeline change
   - Status: skipped
   - Reason: target sodium pipeline file from upstream commit does not exist in this 1.20 branch; build.gradle dependency bump is not applied here.
+
+## pre175
+
+- `c34f3cf55` - sodium SpriteUtil API update
+  - Status: skipped
+  - Reason: target sodium pipeline file from upstream commit does not exist in this 1.20 branch.
+
+- `e05614500` - update `zh_cn.json`
+  - Status: skipped as already present
+  - Reason: affected keys are already present in current 1.20 `zh_cn.json`.
+
+- `b19398147` - optional create entity tags (`required: false`)
+  - Status: skipped as already present
+  - Reason: `no_collision` tag already uses optional object entries in current 1.20.
+
+- `390b086a9` - old door conversion with missing state guard
+  - Status: skipped as already present
+  - Reason: current `convertDoorBaseData` already checks `state != null` before writing.

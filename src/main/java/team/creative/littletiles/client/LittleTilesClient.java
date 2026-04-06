@@ -230,13 +230,22 @@ public class LittleTilesClient {
         
         blockEntityRenderer = new BETilesRenderer();
         BlockEntityRenderers.register(LittleTilesRegistry.BE_TILES_TYPE_RENDERED.get(), x -> blockEntityRenderer);
-        
-        ResourceLocation filled = new ResourceLocation(LittleTiles.MODID, "filled");
-        ClampedItemPropertyFunction function = (stack, level, entity, x) -> ((ItemColorIngredient) stack.getItem()).getColor(stack) / (float) ColorIngredient.BOTTLE_SIZE;
-        ItemProperties.register(LittleTilesRegistry.BLACK_COLOR.get(), filled, function);
-        ItemProperties.register(LittleTilesRegistry.CYAN_COLOR.get(), filled, function);
-        ItemProperties.register(LittleTilesRegistry.MAGENTA_COLOR.get(), filled, function);
-        ItemProperties.register(LittleTilesRegistry.YELLOW_COLOR.get(), filled, function);
+
+        event.enqueueWork(() -> {
+            ResourceLocation filled = new ResourceLocation(LittleTiles.MODID, "filled");
+            ClampedItemPropertyFunction function = (stack, level, entity, x) -> ((ItemColorIngredient) stack.getItem()).getColor(stack) / (float) ColorIngredient.BOTTLE_SIZE;
+            ItemProperties.register(LittleTilesRegistry.BLACK_COLOR.get(), filled, function);
+            ItemProperties.register(LittleTilesRegistry.CYAN_COLOR.get(), filled, function);
+            ItemProperties.register(LittleTilesRegistry.MAGENTA_COLOR.get(), filled, function);
+            ItemProperties.register(LittleTilesRegistry.YELLOW_COLOR.get(), filled, function);
+        });
+
+        mc.getItemColors().register((stack, layer) -> {
+            BlockIngredientEntry entry = ItemBlockIngredient.loadIngredient(stack);
+            if (entry == null)
+                return ColorUtils.WHITE;
+            return mc.getItemColors().getColor(entry.getBlockStack(), layer);
+        }, LittleTilesRegistry.BLOCK_INGREDIENT.get());
         
         RubidiumManager.init();
         OculusManager.init();
