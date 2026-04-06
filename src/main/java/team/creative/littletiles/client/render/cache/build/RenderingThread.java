@@ -194,10 +194,15 @@ public class RenderingThread extends Thread {
                         data.index = data.be.render.startBuildingCache();
                         BlockPos pos = data.be.getBlockPos();
                         
-                        data.beforeBuilding();
+                        synchronized (data.be) {
+                            data.beforeBuilding();
+                        }
                         
                         for (RenderType layer : RenderType.chunkBufferLayers()) {
-                            IndexedCollector<LittleRenderBox> cubes = data.be.render.getRenderingBoxes(data, layer);
+                            IndexedCollector<LittleRenderBox> cubes;
+                            synchronized (data.be) {
+                                cubes = data.be.render.getRenderingBoxes(data, layer);
+                            }
 
                             if (cubes == null || cubes.isEmpty()) {
                                 if (!finish(data, EMPTY_HOLDERS, CURRENT_RENDERING_INDEX, false))

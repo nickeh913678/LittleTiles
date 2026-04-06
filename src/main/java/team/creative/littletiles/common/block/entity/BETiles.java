@@ -121,7 +121,7 @@ public class BETiles extends BlockEntityCreative implements IGridBased, ILittleB
     }
     
     @Override
-    public void convertTo(LittleGrid to) {
+    public synchronized void convertTo(LittleGrid to) { // Avoid concurrent grid conversion while render boxes are being built
         boolean rendering = false;
         if (level != null && level.isClientSide)
             rendering = render.getAndSetBlocked();
@@ -367,7 +367,7 @@ public class BETiles extends BlockEntityCreative implements IGridBased, ILittleB
         return getLittleBlockBox().getShape(grid);
     }
     
-    public void rebuildFaces() {
+    public synchronized void rebuildFaces() { // Keep grid stable while face cache is rebuilt
         LittleServerFace face = new LittleServerFace(this);
         for (Pair<IParentCollection, LittleTile> entry : allTiles())
             for (LittleBox box : entry.value)
