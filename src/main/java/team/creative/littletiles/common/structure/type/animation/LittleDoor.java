@@ -140,6 +140,11 @@ public abstract class LittleDoor extends LittleUndirectedStateStructure {
     public boolean playSoundWhenChangingState() {
         return playPlaceSounds;
     }
+    
+    @Override
+    public boolean entityNoClip() {
+        return noClip;
+    }
 
     public static class LittleDoorType extends LittleStateStructureType {
         

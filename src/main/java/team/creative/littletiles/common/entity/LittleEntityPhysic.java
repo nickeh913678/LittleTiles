@@ -185,7 +185,7 @@ public abstract class LittleEntityPhysic<T extends LittleEntity<? extends Little
     }
     
     public void transform(CollisionCoordinator coordinator) {
-        if (preventPush)
+        if (preventPush || parent.noClip())
             return;
         
         noCollision = true;

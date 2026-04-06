@@ -369,6 +369,12 @@ public abstract class LittleEntity<T extends LittleEntityPhysic> extends Entity 
         return result;
     }
     
+    // ==========SPECIAL=============
+    
+    public boolean noClip() {
+        return false;
+    }
+    
     // ================CLIENT================
     
     @Override
