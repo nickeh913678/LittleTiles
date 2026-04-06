@@ -406,5 +406,7 @@
     "gui.filter.and": "All",
     "gui.filter.not_or": "None",
     "gui.filter.not_and": "Not all",
+    "gui.filter.missing": "Missing Block",
+    "gui.filter.name": "Block Name",
     "gui.signal.length": "Length"
 }

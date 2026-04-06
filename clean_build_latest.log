@@ -1,0 +1,408 @@
+Picked up JAVA_TOOL_OPTIONS: -Dnet.minecraftforge.gradle.check.certs=false 
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+MixinGradle did not locate the diffplug APT plugin, skipping eclipse task configuration
+
+> Configure project :CreativeCore
+MixinGradle did not locate the diffplug APT plugin, skipping eclipse task configuration
+
+> Task :clean
+> Task :CreativeCore:clean
+> Task :CreativeCore:downloadMcpConfig
+> Task :CreativeCore:extractSrg
+> Task :CreativeCore:createMcpToSrg
+
+> Task :CreativeCore:compileJava
+Picked up JAVA_TOOL_OPTIONS: -Dnet.minecraftforge.gradle.check.certs=false 
+注: SpongePowered MIXIN Annotation Processor Version=0.8.5 (MixinGradle Version=0.7.38)
+注: Supported obfuscation types: ObfuscationServiceMCP supports [notch] ObfuscationServiceFG3 supports [searge]
+注: Loading searge mappings from F:\CreativeCore-1.20\build\createMcpToSrg\output.tsrg
+注: Writing refmap to F:\CreativeCore-1.20\build\tmp\compileJava\compileJava-refmap.json
+注: Writing refmap to F:\CreativeCore-1.20\build\tmp\compileJava\compileJava-refmap.json
+注: Writing searge composite mappings to F:\CreativeCore-1.20\build\tmp\compileJava\compileJava-mappings.tsrg
+注: Writing refmap to F:\CreativeCore-1.20\build\tmp\compileJava\compileJava-refmap.json
+注: Writing refmap to F:\CreativeCore-1.20\build\tmp\compileJava\compileJava-refmap.json
+注: Writing searge composite mappings to F:\CreativeCore-1.20\build\tmp\compileJava\compileJava-mappings.tsrg
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\ConfigTypeConveration.java:605: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                    return new ResourceLocation(element.getAsString());
+                           ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\ConfigTypeConveration.java:634: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                return new ResourceLocation(button.getText());
+                       ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\ConfigTypeConveration.java:643: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        registerTypeCreator(ResourceLocation.class, () -> new ResourceLocation(""));
+                                                          ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\ConfigTypeConveration.java:651: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                    return new SoundConfig(new ResourceLocation(element.getAsJsonObject().get("sound").getAsString()), element.getAsJsonObject().get("volume").getAsFloat(), element
+                                           ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\ConfigTypeConveration.java:710: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        registerTypeCreator(SoundConfig.class, () -> new SoundConfig(new ResourceLocation("missing")));
+                                                                     ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\ConfigTypeConveration.java:787: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        registerTypeCreator(MobEffectConfig.class, () -> new MobEffectConfig(BuiltInRegistries.MOB_EFFECT, new ResourceLocation("minecraft", "slowness"), 2, 1, false));
+                                                                                                           ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\gui\style\GuiStyle.java:66: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                    Resource resource = mc.getResourceManager().getResource(new ResourceLocation(name)).orElseThrow();
+                                                                            ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\registry\ConfigTypeRegistryObject.java:24: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            return new RegistryObjectConfig(defaultValue.registry, new ResourceLocation(element.getAsString()));
+                                                                   ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\registry\ConfigTypeRegistryObjectList.java:36: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                list.add(new ResourceLocation(array.get(i).getAsString()));
+                         ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\registry\ConfigTypeRegistryTag.java:25: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            return new RegistryTagConfig(defaultValue.registry, TagKey.create(defaultValue.registry.key(), new ResourceLocation(element.getAsString())));
+                                                                                                           ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\registry\ConfigTypeRegistryTagList.java:37: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                list.add(TagKey.create(defaultValue.registry.key(), new ResourceLocation(array.get(i).getAsString())));
+                                                                    ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\config\converation\registry\GuiRegistryTagHandler.java:119: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                return TagKey.create(registry.key(), new ResourceLocation(getName(selector.getSelected())));
+                                                     ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeCore.java:57: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    public static final CreativeNetwork NETWORK = new CreativeNetwork(1, LOGGER, new ResourceLocation(CreativeCore.MODID, "main"));
+                                                                                 ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeCore.java:72: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
+                                ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeCore.java:73: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::registerMenus);
+                                ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeCore.java:74: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        COMMAND_ARGUMENT_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+                                                                ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeCore.java:77: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreativeCoreClient.load(FMLJavaModLoadingContext.get().getModEventBus()));
+                                                                                                              ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\gui\style\display\DisplayTexture.java:16: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        this(new ResourceLocation("missing"), 0, 0);
+             ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\gui\style\GuiStyleUtils.java:8: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    public static final ResourceLocation DEFAULT_STYLE_LOCATION = new ResourceLocation(CreativeCore.MODID, "gui/default_style.json");
+                                                                  ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\gui\style\GuiStyleUtils.java:9: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    public static final ResourceLocation GUI_ASSETS = new ResourceLocation(CreativeCore.MODID, "textures/gui_assets.png");
+                                                      ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\filter\premade\BlockFilters.java:67: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            this.block = BuiltInRegistries.BLOCK.get(new ResourceLocation(nbt.getString("b")));
+                                                     ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\filter\premade\BlockFilters.java:97: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                blocks[i] = BuiltInRegistries.BLOCK.get(new ResourceLocation(list.getString(i)));
+                                                        ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\filter\premade\ItemFilters.java:57: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            this.item = BuiltInRegistries.ITEM.get(new ResourceLocation(nbt.getString("i")));
+                                                   ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\filter\premade\ItemFilters.java:87: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                items[i] = BuiltInRegistries.ITEM.get(new ResourceLocation(list.getString(i)));
+                                                      ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\ingredient\CreativeIngredientBlock.java:25: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        block = BuiltInRegistries.BLOCK.get(new ResourceLocation(nbt.getString("block")));
+                                            ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\ingredient\CreativeIngredientBlockTag.java:36: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        tag = TagKey.create(Registries.BLOCK, new ResourceLocation(nbt.getString("tag")));
+                                              ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\ingredient\CreativeIngredientItem.java:30: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        item = BuiltInRegistries.ITEM.get(new ResourceLocation(nbt.getString("item")));
+                                          ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\ingredient\CreativeIngredientItemTag.java:35: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        tag = TagKey.create(Registries.ITEM, new ResourceLocation(nbt.getString("tag")));
+                                             ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\text\AdvancedComponentHelper.java:272: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                        datasource = new StorageDataSource(new ResourceLocation(GsonHelper.getAsString(jsonobject, "storage")));
+                                                           ^
+F:\CreativeCore-1.20\src\main\java\team\creative\creativecore\common\util\unsafe\CreativeHackery.java:20: 警告: [removal] java.security 中的 AccessController 已过时, 且标记为待删除
+            return java.security.AccessController.doPrivileged(new java.security.PrivilegedExceptionAction<sun.misc.Unsafe>() {
+                                ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\client\CreativeCoreClient.java:63: 警告: [removal] ModLoadingContext 中的 get() 已过时, 且标记为待删除
+        ModLoadingContext.get().registerExtensionPoint(ConfigScreenFactory.class, () -> new ConfigScreenFactory((a, b) -> {
+                         ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\client\CreativeCoreClient.java:104: 警告: [removal] ModLoadingContext 中的 get() 已过时, 且标记为待删除
+        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class,
+                         ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\client\render\model\CreativeModelLoader.java:16: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            block = new ResourceLocation(jsonObject.get("block").getAsString());
+                    ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\client\render\model\CreativeModelLoader.java:19: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            item = new ResourceLocation(jsonObject.get("item").getAsString());
+                   ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeForgeLoader.java:47: 警告: [removal] ModLoadingContext 中的 get() 已过时, 且标记为待删除
+        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(suppliedVersion, remoteVersionTest));
+                         ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeForgeLoader.java:57: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        FMLJavaModLoadingContext.get().getModEventBus().addListener((FMLCommonSetupEvent x) -> loader.onInitialize());
+                                ^
+F:\CreativeCore-1.20\src\forge\java\team\creative\creativecore\CreativeForgeLoader.java:63: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+            FMLJavaModLoadingContext.get().getModEventBus().addListener((FMLClientSetupEvent x) -> loader.onInitializeClient());
+                                    ^
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+37 个警告
+
+> Task :CreativeCore:addMixinsToJar
+> Task :CreativeCore:processResources UP-TO-DATE
+> Task :CreativeCore:classes
+> Task :CreativeCore:jar
+> Task :compileApiJava UP-TO-DATE
+> Task :processApiResources NO-SOURCE
+> Task :apiClasses UP-TO-DATE
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createMcpToSrg UP-TO-DATE
+> Task :CreativeCore:configureReobfTaskForReobfJar
+
+> Task :CreativeCore:reobfJar
+Picked up JAVA_TOOL_OPTIONS: -Dnet.minecraftforge.gradle.check.certs=false 
+
+> Task :compileJava
+Picked up JAVA_TOOL_OPTIONS: -Dnet.minecraftforge.gradle.check.certs=false 
+注: SpongePowered MIXIN Annotation Processor Version=0.8.5 (MixinGradle Version=0.7.38)
+注: Supported obfuscation types: ObfuscationServiceMCP supports [notch] ObfuscationServiceFG3 supports [searge]
+注: Loading searge mappings from F:\LT3\build\createMcpToSrg\output.tsrg
+注: Writing refmap to F:\LT3\build\tmp\compileJava\compileJava-refmap.json
+F:\LT3\src\main\java\team\creative\littletiles\mixin\client\render\RebuildTaskMixin.java:45: 警告: Cannot find target for @Shadow field in net.minecraft.client.renderer.chunk.ChunkRenderDispatcher$RenderChunk$RebuildTask
+    @Shadow(aliases = { "this$0" })
+    ^
+F:\LT3\src\main\java\team\creative\littletiles\mixin\rubidium\DefaultChunkRendererMixin.java:52: 警告: Unable to locate obfuscation mapping for @Shadow field
+    @Shadow
+    ^
+注: Writing refmap to F:\LT3\build\tmp\compileJava\compileJava-refmap.json
+注: Writing searge composite mappings to F:\LT3\build\tmp\compileJava\compileJava-mappings.tsrg
+注: Writing refmap to F:\LT3\build\tmp\compileJava\compileJava-refmap.json
+注: Writing refmap to F:\LT3\build\tmp\compileJava\compileJava-refmap.json
+注: Writing searge composite mappings to F:\LT3\build\tmp\compileJava\compileJava-mappings.tsrg
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\LittleEntityPhysic.java:35: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    private static final TagKey<EntityType<?>> NO_COLLISION = TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(LittleTiles.MODID, "no_collision"));
+                                                                                                    ^
+F:\LT3\src\main\java\team\creative\littletiles\common\action\LittleAction.java:280: 警告: [removal] LeftClickBlock 中的 LeftClickBlock(Player,BlockPos,Direction) 已过时, 且标记为待删除
+                pos), facing.toVanilla(), pos, true)) : new PlayerInteractEvent.LeftClickBlock(player, pos, facing.toVanilla());
+                                                        ^
+F:\LT3\src\main\java\team\creative\littletiles\client\level\LittleVanillaInteractionHandlerClient.java:120: 警告: [removal] ForgeHooks 中的 onLeftClickBlock(Player,BlockPos,Direction) 已过时, 且标记为待删除
+                if (!ForgeHooks.onLeftClickBlock(player, pos, direction).isCanceled())
+                               ^
+F:\LT3\src\main\java\team\creative\littletiles\client\level\LittleVanillaInteractionHandlerClient.java:132: 警告: [removal] ForgeHooks 中的 onLeftClickBlock(Player,BlockPos,Direction) 已过时, 且标记为待删除
+            PlayerInteractEvent.LeftClickBlock event = ForgeHooks.onLeftClickBlock(player, pos, direction);
+                                                                 ^
+F:\LT3\src\main\java\team\creative\littletiles\client\level\LittleVanillaInteractionHandlerClient.java:198: 警告: [removal] ForgeHooks 中的 onLeftClickBlock(Player,BlockPos,Direction) 已过时, 且标记为待删除
+                if (!ForgeHooks.onLeftClickBlock(player, pos, direction).isCanceled())
+                               ^
+F:\LT3\src\main\java\team\creative\littletiles\client\level\LittleVanillaInteractionHandlerClient.java:223: 警告: [removal] ForgeHooks 中的 onLeftClickBlock(Player,BlockPos,Direction) 已过时, 且标记为待删除
+            if (ForgeHooks.onLeftClickBlock(player, pos, direction).getUseItem() == Event.Result.DENY)
+                          ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:219: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+            ResourceLocation filled = new ResourceLocation(LittleTiles.MODID, "filled");
+                                      ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:245: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CreativeCoreClient.registerBlockModel(new ResourceLocation(LittleTiles.MODID, "empty"), new CreativeBlockModel() {
+                                              ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:258: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CreativeCoreClient.registerItemModel(new ResourceLocation(LittleTiles.MODID, "tiles"), new LittleModelItemTilesBig());
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:259: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CreativeCoreClient.registerItemModel(new ResourceLocation(LittleTiles.MODID, "premade"), new LittleModelItemTilesBig() {
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:280: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CreativeCoreClient.registerItemModel(new ResourceLocation(LittleTiles.MODID, "glove"),
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:303: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CreativeCoreClient.registerItemModel(new ResourceLocation(LittleTiles.MODID, "chisel"),
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:305: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CreativeCoreClient.registerItemModel(new ResourceLocation(LittleTiles.MODID, "blueprint"),
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\client\LittleTilesClient.java:312: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CreativeCoreClient.registerItemModel(new ResourceLocation(LittleTiles.MODID, "blockingredient"),
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\client\render\overlay\PreviewRenderer.java:69: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    public static final ResourceLocation WHITE_TEXTURE = new ResourceLocation(LittleTiles.MODID, "textures/preview.png");
+                                                         ^
+F:\LT3\src\main\java\team\creative\littletiles\client\render\level\LittleClientEventHandler.java:36: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+    private static final ResourceLocation RES_UNDERWATER_OVERLAY = new ResourceLocation("textures/misc/underwater.png");
+                                                                   ^
+F:\LT3\src\main\java\team\creative\littletiles\common\block\little\registry\LittleBlockRegistry.java:44: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        return create(name, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(name)));
+                                                            ^
+F:\LT3\src\main\java\team\creative\littletiles\common\block\little\registry\LittleBlockRegistry.java:81: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            location = new ResourceLocation(parts[0]);
+                       ^
+F:\LT3\src\main\java\team\creative\littletiles\common\convertion\OldLittleTilesDataParser.java:180: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+                case "sound-event" -> eventTag.getBoolean("opening") == opening ? new PlaySoundEvent(PlaySoundEvent.get(new ResourceLocation(eventTag.getString("sound"))), eventTag
+                                                                                                                        ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\EntitySizeHandler.java:10: 警告: [removal] EntityEvent 中的 Size 已过时, 且标记为待删除
+    public static void entitySize(EntityEvent.Size event) {
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\EntitySizeHandler.java:10: 警告: [removal] EntityEvent 中的 Size 已过时, 且标记为待删除
+    public static void entitySize(EntityEvent.Size event) {
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\EntitySizeHandler.java:10: 警告: [removal] EntityEvent 中的 Size 已过时, 且标记为待删除
+    public static void entitySize(EntityEvent.Size event) {
+                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:9: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    dust_fade_out(new ResourceLocation("minecraft", "smoke"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+                  ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:20: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    dust(new ResourceLocation("minecraft", "smoke"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+         ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:31: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    dust_grow(new ResourceLocation("minecraft", "smoke"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+              ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:42: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    bubble(new ResourceLocation("minecraft", "bubble"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+           ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:53: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    diamond(new ResourceLocation("minecraft", "totem_of_undying"), LittleParticleRenderType.PARTICLE_SHEET_TRANSLUCENT) {
+            ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:64: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    spark(new ResourceLocation("minecraft", "firework"), LittleParticleRenderType.PARTICLE_SHEET_TRANSLUCENT) {
+          ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:75: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    spark_fade_out(new ResourceLocation("minecraft", "firework"), LittleParticleRenderType.PARTICLE_SHEET_TRANSLUCENT) {
+                   ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:86: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    spiral(new ResourceLocation("minecraft", "entity_effect"), LittleParticleRenderType.PARTICLE_SHEET_TRANSLUCENT) {
+           ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:97: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    note(new ResourceLocation("minecraft", "note"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+         ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:108: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    flame(new ResourceLocation("minecraft", "flame"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+          ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:119: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    happy(new ResourceLocation("minecraft", "happy_villager"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+          ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:130: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    angry(new ResourceLocation("minecraft", "angry_villager"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+          ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:141: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    damage(new ResourceLocation("minecraft", "damage_indicator"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+           ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:152: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    letter(new ResourceLocation("minecraft", "enchant"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+           ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:163: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    dripping(new ResourceLocation("minecraft", "dripping_water"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+             ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:174: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    falling(new ResourceLocation("minecraft", "falling_water"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+            ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:185: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    heart(new ResourceLocation("minecraft", "heart"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+          ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:196: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    lava(new ResourceLocation("minecraft", "lava"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+         ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:207: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    soul(new ResourceLocation("minecraft", "soul"), LittleParticleRenderType.PARTICLE_SHEET_TRANSLUCENT) {
+         ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:218: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    soul_flame(new ResourceLocation("minecraft", "soul_fire_flame"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+               ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:229: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    big_smoke(new ResourceLocation("minecraft", "campfire_cosy_smoke"), LittleParticleRenderType.PARTICLE_SHEET_TRANSLUCENT) {
+              ^
+F:\LT3\src\main\java\team\creative\littletiles\common\entity\particle\LittleParticleTexture.java:240: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    nautilus(new ResourceLocation("minecraft", "nautilus"), LittleParticleRenderType.PARTICLE_SHEET_OPAQUE) {
+             ^
+F:\LT3\src\main\java\team\creative\littletiles\common\filter\TileFilters.java:63: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(nbt.getString("block")));
+                                                    ^
+F:\LT3\src\main\java\team\creative\littletiles\common\filter\TileFilters.java:132: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            tag = TagKey.create(Registries.BLOCK, new ResourceLocation(nbt.getString("tag")));
+                                                  ^
+F:\LT3\src\main\java\team\creative\littletiles\common\structure\animation\event\PlaySoundEvent.java:23: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+        sound = get(new ResourceLocation(nbt.getString("s")));
+                    ^
+F:\LT3\src\main\java\team\creative\littletiles\common\gui\structure\GuiBuilder.java:43: 警告: [removal] ResourceLocation 中的 ResourceLocation(String) 已过时, 且标记为待删除
+            Block block = ForgeRegistries.BLOCKS.getValue(new ResourceLocation(nbt.getString("block")));
+                                                          ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:113: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    public static final CreativeNetwork NETWORK = new CreativeNetwork(1, LOGGER, new ResourceLocation(LittleTiles.MODID, "main"));
+                                                                                 ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:120: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
+                                ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:121: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> LittleTilesClient.load(FMLJavaModLoadingContext.get().getModEventBus()));
+                                                                                                             ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:125: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        LittleTilesRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+                                                                    ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:126: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        LittleTilesRegistry.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+                                                                   ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:127: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        LittleTilesRegistry.BLOCK_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+                                                                            ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:128: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        LittleTilesRegistry.ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+                                                                      ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:129: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        LittleTilesRegistry.CREATIVE_TABS.register(FMLJavaModLoadingContext.get().getModEventBus());
+                                                                           ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:130: 警告: [removal] FMLJavaModLoadingContext 中的 get() 已过时, 且标记为待删除
+        LittleTilesRegistry.RECIPE_SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+                                                                                ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:200: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        STORAGE_BLOCKS = BlockTags.create(new ResourceLocation(MODID, "storage_blocks"));
+                                          ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTiles.java:202: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        CraftingHelper.register(new ResourceLocation(MODID, "structure"), StructureIngredientSerializer.INSTANCE);
+                                ^
+F:\LT3\src\main\java\team\creative\littletiles\LittleTilesRegistry.java:180: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+    public static final ResourceKey FAKE_DIMENSION = ResourceKey.create(Registries.DIMENSION_TYPE, new ResourceLocation(LittleTiles.MODID, "fake"));
+                                                                                                   ^
+F:\LT3\src\main\java\team\creative\littletiles\server\player\LittleServerPlayerHandler.java:728: 警告: [removal] ForgeHooks 中的 onLeftClickBlock(Player,BlockPos,Direction) 已过时, 且标记为待删除
+        PlayerInteractEvent.LeftClickBlock event = ForgeHooks.onLeftClickBlock(player, pos, direction);
+                                                             ^
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+63 个警告
+
+> Task :addMixinsToJar
+> Task :processResources
+> Task :classes
+> Task :jar
+> Task :configureReobfTaskForReobfJar
+
+> Task :reobfJar
+Picked up JAVA_TOOL_OPTIONS: -Dnet.minecraftforge.gradle.check.certs=false 
+
+> Task :configureReobfTaskForReobfJarJar
+> Task :addMixinsToJarJar
+> Task :jarJar
+
+> Task :reobfJarJar
+Picked up JAVA_TOOL_OPTIONS: -Dnet.minecraftforge.gradle.check.certs=false 
+
+> Task :assemble
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
+> Task :CreativeCore:configureReobfTaskForReobfJarJar
+> Task :CreativeCore:addMixinsToJarJar
+> Task :CreativeCore:jarJar SKIPPED
+> Task :CreativeCore:reobfJarJar SKIPPED
+> Task :CreativeCore:assemble
+> Task :CreativeCore:compileTestJava NO-SOURCE
+> Task :CreativeCore:processTestResources NO-SOURCE
+> Task :CreativeCore:testClasses UP-TO-DATE
+> Task :CreativeCore:test NO-SOURCE
+> Task :CreativeCore:check UP-TO-DATE
+> Task :CreativeCore:build
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 2m 26s
+27 actionable tasks: 23 executed, 4 up-to-date

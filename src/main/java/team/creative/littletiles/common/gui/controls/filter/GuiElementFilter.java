@@ -12,6 +12,8 @@ import team.creative.littletiles.common.block.little.tile.LittleTile;
 import team.creative.littletiles.common.block.little.tile.parent.IParentCollection;
 import team.creative.littletiles.common.filter.TileFilters.TileBlockFilter;
 import team.creative.littletiles.common.filter.TileFilters.TileColorFilter;
+import team.creative.littletiles.common.filter.TileFilters.TileMissingFilter;
+import team.creative.littletiles.common.filter.TileFilters.TileNameFilter;
 import team.creative.littletiles.common.filter.TileFilters.TileTagFilter;
 import team.creative.littletiles.common.gui.controls.filter.GuiElementFilterGroup.GuiElementFilterOperator;
 
@@ -45,6 +47,10 @@ public abstract class GuiElementFilter extends GuiParent {
             return new GuiElementFilterColor(color.color);
         if (filter instanceof TileTagFilter tag)
             return new GuiElementFilterTag(tag.tag);
+        if (filter instanceof TileMissingFilter missing)
+            return new GuiElementFilterMissing(player);
+        if (filter instanceof TileNameFilter name)
+            return new GuiElementFilterName(player, name.filter);
         return new GuiElementFilterGroup(player, GuiElementFilterOperator.OR);
     }
     

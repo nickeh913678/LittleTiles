@@ -1,0 +1,23 @@
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == 'org.spongepowered.mixin') {
+                useVersion '0.7.38'
+            }
+        }
+    }
+    repositories {
+        gradlePluginPortal()
+        maven {
+            name = 'MinecraftForge'
+            url = 'https://maven.minecraftforge.net/'
+        }
+        maven {
+            name = 'Sponge'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+    }
+}
+
+include ':CreativeCore'
+project(':CreativeCore').projectDir = file('../CreativeCore-1.20')

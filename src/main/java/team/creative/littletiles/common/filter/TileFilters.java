@@ -16,7 +16,7 @@ public class TileFilters {
     
     static {
         BiFilter.SERIALIZER.register("b", TileBlockFilter.class).register("c", TileColorFilter.class).register("no", TileNoStructureFilter.class).register("t",
-            TileTagFilter.class);
+            TileTagFilter.class).register("m", TileMissingFilter.class).register("n", TileNameFilter.class);
     }
     
     public static BiFilter<IParentCollection, LittleTile> block(Block block) {
@@ -33,6 +33,14 @@ public class TileFilters {
     
     public static BiFilter<IParentCollection, LittleTile> noStructure() {
         return new TileNoStructureFilter();
+    }
+    
+    public static BiFilter<IParentCollection, LittleTile> missing() {
+        return new TileMissingFilter();
+    }
+    
+    public static BiFilter<IParentCollection, LittleTile> name(String filter) {
+        return new TileNameFilter(filter);
     }
     
     public static BiFilter<IParentCollection, LittleTile> and(BiFilter<IParentCollection, LittleTile>... filters) {
@@ -143,6 +151,50 @@ public class TileFilters {
         public boolean is(IParentCollection parent, LittleTile tile) {
             return tile.getBlock().is(tag);
         }
+    }
+    
+    public static class TileMissingFilter implements BiFilter<IParentCollection, LittleTile>, CompoundSerializer {
+        
+        public TileMissingFilter() {}
+        
+        public TileMissingFilter(CompoundTag tag) {}
+        
+        @Override
+        public CompoundTag write() {
+            return new CompoundTag();
+        }
+        
+        @Override
+        public boolean is(IParentCollection parent, LittleTile tile) {
+            return tile.getBlock().getStack().isEmpty();
+        }
+        
+    }
+    
+    public static class TileNameFilter implements BiFilter<IParentCollection, LittleTile>, CompoundSerializer {
+        
+        public final String filter;
+        
+        public TileNameFilter(String filter) {
+            this.filter = filter;
+        }
+        
+        public TileNameFilter(CompoundTag nbt) {
+            filter = nbt.getString("filter");
+        }
+        
+        @Override
+        public CompoundTag write() {
+            CompoundTag tag = new CompoundTag();
+            tag.putString("filter", filter);
+            return tag;
+        }
+        
+        @Override
+        public boolean is(IParentCollection parent, LittleTile tile) {
+            return tile.getBlock().blockName().toLowerCase().contains(filter.toLowerCase());
+        }
+        
     }
     
 }
