@@ -9,6 +9,7 @@ import team.creative.creativecore.common.gui.VAlign;
 import team.creative.creativecore.common.gui.controls.collection.GuiComboBoxMapped;
 import team.creative.creativecore.common.gui.controls.parent.GuiColumn;
 import team.creative.creativecore.common.gui.controls.parent.GuiLabeledControl;
+import team.creative.creativecore.common.gui.controls.parent.GuiLeftRightBox;
 import team.creative.creativecore.common.gui.controls.parent.GuiPanel;
 import team.creative.creativecore.common.gui.controls.parent.GuiRow;
 import team.creative.creativecore.common.gui.controls.parent.GuiTable;
@@ -213,10 +214,10 @@ public class GuiParticle extends GuiLayer {
         add(spreadPanel = new GuiPanel());
         spread.select(REGISTRY.get(particle.spread.getClass()));
         
-        GuiParent bottom = new GuiParent().setAlign(Align.RIGHT);
+        GuiLeftRightBox bottom = new GuiLeftRightBox();
         add(bottom);
         bottom.addLeft(locked = new GuiCheckBox("locked", particle.locked).setTranslate("gui.structure.locked"));
-        bottom.add(new GuiButton("save", x -> {
+        bottom.addRight(new GuiButton("save", x -> {
             CompoundTag nbt = new CompoundTag();
             
             nbt.putInt("tickCount", count.getValue());
