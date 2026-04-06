@@ -73,3 +73,17 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `51430b5f6` - add `zh_cn.json`
   - Status: skipped as already present
   - Reason: `src/main/resources/assets/littletiles/lang/zh_cn.json` already exists in this 1.20 branch.
+
+## pre173
+
+- `4036887d1` - missing structure exception in old converter
+  - Status: skipped as already present
+  - Reason: `LittleMissingStructureException` and throw site are already present in current 1.20 code.
+
+- `97f6e19b5` - `LittleGroup.copy` should copy structure data safely
+  - Status: skipped as already present
+  - Reason: current 1.20 already uses `structure != null ? structure.copy() : null` in both relevant copy paths.
+
+- `36c44ed6b` - placer grid reset fix in `LittleToolPlacer`
+  - Status: skipped
+  - Reason: `LittleToolPlacer` class/path from upstream commit does not exist in 1.20 branch.

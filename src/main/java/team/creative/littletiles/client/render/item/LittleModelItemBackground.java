@@ -2,7 +2,6 @@ package team.creative.littletiles.client.render.item;
 
 import java.util.function.Function;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.Minecraft;
@@ -38,10 +37,7 @@ public class LittleModelItemBackground extends CreativeItemModel {
     @Override
     public void applyCustomOpenGLHackery(PoseStack pose, ItemStack stack, ItemDisplayContext cameraTransformType) {
         if (cameraTransformType == ItemDisplayContext.GUI || shouldRenderFake(stack)) {
-            
-            if (cameraTransformType == ItemDisplayContext.GUI)
-                RenderSystem.disableDepthTest();
-            
+
             pose.pushPose();
             
             ItemStack toFake = getFakeStack(stack);
@@ -53,10 +49,7 @@ public class LittleModelItemBackground extends CreativeItemModel {
             MultiBufferSource.BufferSource multibuffersource$buffersource = Minecraft.getInstance().renderBuffers().bufferSource();
             mc.getItemRenderer().render(toFake, cameraTransformType, false, pose, multibuffersource$buffersource, 15728880, OverlayTexture.NO_OVERLAY, model);
             multibuffersource$buffersource.endBatch();
-            
-            if (cameraTransformType == ItemDisplayContext.GUI)
-                RenderSystem.enableDepthTest();
-            
+
             pose.popPose();
         }
     }

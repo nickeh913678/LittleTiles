@@ -29,7 +29,6 @@ import team.creative.littletiles.common.placement.PlacementPreview;
 import team.creative.littletiles.common.placement.mode.PlacementMode;
 import team.creative.littletiles.common.placement.setting.PlacementPlayerSetting;
 import team.creative.littletiles.common.structure.LittleStructureType;
-import team.creative.littletiles.common.structure.registry.premade.LittlePremadePreview;
 import team.creative.littletiles.common.structure.registry.premade.LittlePremadeRegistry;
 import team.creative.littletiles.common.structure.type.premade.LittleStructurePremade.LittlePremadeType;
 
@@ -53,10 +52,6 @@ public class ItemPremadeStructure extends Item implements ILittlePlacer, IItemTo
     
     public static LittlePremadeType get(ItemStack stack) {
         return LittlePremadeRegistry.get(stack.getOrCreateTagElement(LittleGroup.STRUCTURE_KEY).getString("id"));
-    }
-    
-    public static LittlePremadePreview getPremade(ItemStack stack) {
-        return LittlePremadeRegistry.getPreview(stack.getOrCreateTagElement(LittleGroup.STRUCTURE_KEY).getString("id"));
     }
     
     public ItemPremadeStructure() {
@@ -94,14 +89,6 @@ public class ItemPremadeStructure extends Item implements ILittlePlacer, IItemTo
     @Override
     public boolean shouldRenderInHand(ItemStack stack) {
         return hasTiles(stack);
-    }
-    
-    public void removeUnnecessaryData(ItemStack stack) {
-        if (stack.hasTag()) {
-            stack.getTag().remove("tiles");
-            stack.getTag().remove("size");
-            stack.getTag().remove("min");
-        }
     }
     
     public static void clearCache() {
