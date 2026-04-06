@@ -129,7 +129,6 @@ public class LittleTicker extends LevelHandler implements Iterable<LittleTickTic
                 }
                 tick++;
             }
-            tick++;
         }
         
         synchronized (tickingStructures) {

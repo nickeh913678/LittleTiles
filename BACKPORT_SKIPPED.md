@@ -215,3 +215,17 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `02e31b463` - bag slot update cache invalidation
   - Status: skipped as already present
   - Reason: current 1.20 `GuiBag.BagSlot.remove(...)` already calls `clearItemCache()` after saving inventory.
+
+## pre185
+
+- `15f5c2bbe` - signal processing on client side
+  - Status: partially applied
+  - Reason: most safeguards were already present; applied the remaining `LittleTicker.tick()` fix to prevent an extra server tick increment and keep scheduling/signaling timing consistent.
+
+- `15f5c2bbe` - debug helpers in location/timeline
+  - Status: skipped as already present
+  - Reason: `StructureLocation.toString()` and `AnimationTimeline.getTick()` are already present in current 1.20 code.
+
+- `eff8b4290` - door placement no-space crash guard
+  - Status: skipped as already present
+  - Reason: current 1.20 `LittleStructure.changeToBlockForm()` already checks `result == null` before using `result` and before broadcasting updates.
