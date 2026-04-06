@@ -151,3 +151,13 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `a1cfb4b30` - animation section compiler refresh in `LittleAnimationHandlerClient`
   - Status: skipped
   - Reason: upstream `sectionCompiler` field/method path does not exist in this 1.20 implementation.
+
+## pre178
+
+- `13fec7386` - placement exception logging
+  - Status: skipped as already present
+  - Reason: current 1.20 `Placement` code already logs both nested `LittleActionException` and wrapped runtime exception paths with `LittleTiles.LOGGER.catching(...)`.
+
+- `347d491c9` - little bag invalid block filtering order
+  - Status: skipped as already present
+  - Reason: current 1.20 `LittleAction` already applies `isBlockInvalid(...)` before `isBlockValid(...)`, with `EntityBlock`/`SlabBlock` handling in the invalid path.
