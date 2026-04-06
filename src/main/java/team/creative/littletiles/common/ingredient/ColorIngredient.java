@@ -148,14 +148,14 @@ public class ColorIngredient extends LittleIngredient<ColorIngredient> {
             if (remaining == null)
                 remaining = new ColorIngredient();
             remaining.black = -this.black;
-            this.black = limitBlack;
+            this.black = 0;
         }
         this.cyan -= ingredient.cyan;
         if (this.cyan < 0) {
             if (remaining == null)
                 remaining = new ColorIngredient();
             remaining.cyan = -this.cyan;
-            this.cyan = limitCyan;
+            this.cyan = 0;
         }
         this.magenta -= ingredient.magenta;
         if (this.magenta < 0) {

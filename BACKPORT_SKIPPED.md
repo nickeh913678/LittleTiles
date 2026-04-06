@@ -209,3 +209,9 @@ This file tracks upstream commits that were intentionally skipped, partially app
 - `f4b34103c` - client entity-add hook for smoother transitions
   - Status: skipped
   - Reason: upstream targets a newer `ClientPacketListener#createEntityFromPacket(...)` hook signature; 1.20 branch uses `handleAddEntity(...)` with an existing transition interception path in `ClientPacketListenerMixin`.
+
+## pre184
+
+- `02e31b463` - bag slot update cache invalidation
+  - Status: skipped as already present
+  - Reason: current 1.20 `GuiBag.BagSlot.remove(...)` already calls `clearItemCache()` after saving inventory.
