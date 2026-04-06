@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import team.creative.littletiles.common.block.entity.BETiles;
 import team.creative.littletiles.common.block.little.tile.LittleTile;
 import team.creative.littletiles.common.block.little.tile.group.LittleGroup;
@@ -35,6 +36,10 @@ public class PlacementResult {
         }
         placedPreviews.add(parent.getGrid(), tile, tile.copy());
         placedBoxes.addBoxes(parent, tile);
+    }
+    
+    public void broadcastChangesImmediately(ServerLevel level) {
+        // ChunkMap.getVisibleChunkIfPresent() is protected in Forge 1.20; skip immediate broadcast
     }
     
 }

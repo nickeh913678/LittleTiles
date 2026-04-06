@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.event.level.BlockEvent.EntityMultiPlaceEvent;
 import team.creative.creativecore.common.util.math.base.Facing;
 import team.creative.littletiles.LittleTiles;
 import team.creative.littletiles.common.action.LittleAction;
@@ -190,14 +189,16 @@ public class Placement {
             
             affectedBlocks.setValue(0);
             
-            List<BlockSnapshot> snaps = new ArrayList<>();
+            boolean cancelled = false;
+            BlockState against = level.getBlockState(preview.position.facing == null ? preview.position.getPos() : preview.position.getPos().relative(preview.position.facing
+                    .toVanilla()));
             for (BlockPos snapPos : blocks.keySet())
-                snaps.add(BlockSnapshot.create(level.dimension(), level, snapPos));
-
-            EntityMultiPlaceEvent event = new BlockEvent.EntityMultiPlaceEvent(snaps, level.getBlockState(preview.position.facing == null ? preview.position
-                    .getPos() : preview.position.getPos().relative(preview.position.facing.toVanilla())), player);
-            MinecraftForge.EVENT_BUS.post(event);
-            if (event.isCanceled()) {
+                if (MinecraftForge.EVENT_BUS.post(new BlockEvent.EntityPlaceEvent(BlockSnapshot.create(level.dimension(), level, snapPos), against, player))) {
+                    cancelled = true;
+                    break;
+                }
+            
+            if (cancelled) {
                 for (BlockPos snapPos : blocks.keySet())
                     LittleAction.sendBlockResetToClient(level, player, snapPos);
                 throw new LittleTilesConfig.AreaProtected();
